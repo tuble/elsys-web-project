@@ -1,5 +1,6 @@
 var box, drum, myPart;
 var playing = false;
+var default_volume = 0.5;
 var vol;
 
 var boxPat = [1,0,1,0,1,0,1,0];
@@ -14,6 +15,8 @@ function preload() {
 function setup() {
     createCanvas(720, 400);
     background(0);
+    
+    masterVolume(default_volume);
 
     noStroke();
     fill(255);
@@ -24,33 +27,34 @@ function setup() {
     myPart = new p5.Part();
     myPart.addPhrase(boxPhrase);
     myPart.addPhrase(drumPhrase);
-    myPart.setBPM(90);
+
+
+    myPart.setBPM(90); // slider for this thing too
 
 
 }
 
 document.getElementById("playButton").onclick = function() {togglePlay()};
-
+document.getElementById("volumeSlider").oninput = function() {changeVolume(this.value)};
 
 function draw() {
-    
-    
-    masterVolume(0.5);
+       
     if(playing)
         myPart.start();
     else 
         myPart.stop();
-
-
-    vol = document.getElementById("volumeSlider").oninput = function() {masterVolume(this.value)};
     
 }
 
-var pB = document.getElementById("g");
+function changeVolume(vol) {
+
+    masterVolume(vol);
+
+}
 
 function togglePlay() {
     playing = !playing;
-    console.log(playing);
+    console.log("playing set to: " + playing);
 }
 
 function playBox(time, playbackRate) {
