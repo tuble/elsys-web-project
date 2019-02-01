@@ -29,21 +29,17 @@ function setup() {
 
 }
 
-console.log(vol);
+document.getElementById("playButton").onclick = function() {togglePlay()};
 
 
 function draw() {
     
-    
-    if(pB)
-    pB.addEventListener("click", togglePlay);
     
     masterVolume(0.5);
     if(playing)
         myPart.start();
     else 
         myPart.stop();
-    
 
 
     vol = document.getElementById("volumeSlider").oninput = function() {masterVolume(this.value)};
@@ -54,6 +50,7 @@ var pB = document.getElementById("g");
 
 function togglePlay() {
     playing = !playing;
+    console.log(playing);
 }
 
 function playBox(time, playbackRate) {
