@@ -35,7 +35,7 @@ function setup() {
 }
 
 document.getElementById("playButton").onclick = function() {togglePlay()};
-document.getElementById("volumeSlider").oninput = function() {changeVolume(this.value)};
+document.getElementById("volumeSlider").oninput = function() {changeTempo(this.value)};
 
 function draw() {
        
@@ -46,9 +46,9 @@ function draw() {
     
 }
 
-function changeVolume(vol) {
+function changeTempo(val) {
 
-    masterVolume(vol);
+    setBPM(val * 2);
 
 }
 
