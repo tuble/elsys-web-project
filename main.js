@@ -1,10 +1,11 @@
 var box, drum, myPart;
 var playing = false;
 var default_volume = 0.5;
+var default_bpm = 80;
 var vol;
 
 var boxPat = [1,0,1,0,1,0,1,0];
-var drumPat = [0,0,0,0,0,0,0,0];
+var drumPat = [0,1,0,0,0,0,0,0];
 
 
 function preload() {
@@ -17,6 +18,7 @@ function setup() {
     background(0);
     
     masterVolume(default_volume);
+    setBPM(default_bpm);
 
     noStroke();
     fill(255);
@@ -29,13 +31,12 @@ function setup() {
     myPart.addPhrase(drumPhrase);
 
 
-    myPart.setBPM(90); // slider for this thing too
 
 
 }
 
 document.getElementById("playButton").onclick = function() {togglePlay()};
-document.getElementById("volumeSlider").oninput = function() {changeTempo(this.value)};
+document.getElementById("sliderBPM").oninput = function() {changeTempo(this.value)};
 
 function draw() {
        
@@ -43,12 +44,14 @@ function draw() {
         myPart.start();
     else 
         myPart.stop();
+
     
 }
 
 function changeTempo(val) {
 
     setBPM(val * 2);
+    console.log("tempo: " + val* 2)
 
 }
 
