@@ -1,23 +1,27 @@
-var box, drum, myPart;
+var p1_sound, p2_sound, myPart;
 var playing = false;
 var default_volume = 0.5;
 var default_bpm = 80;
 var vol;
 
-var boxPat = [1,0,0,0,0,0,0,0];
-var drumPat = [0,0,0,0,0,0,0,0];
+var p1 = [1,0,0,0,0,0,0,0];
+var p2 = [0,0,0,0,0,0,0,0];
+var p3 = [0,0,0,0,0,0,0,0];
+var p4 = [0,0,0,0,0,0,0,0];
+
 
 document.getElementById("playButton").onclick = function() {togglePlay()}; 
 document.getElementById("sliderBPM").oninput = function() {changeTempo(this.value)};
 
 
 function preload() {
-  box = loadSound('sounds/clap01.ogg', () =>{});
-  drum = loadSound('sounds/kick_hardcore01.ogg', () =>{})
+    p1_sound = loadSound('sounds/clap.ogg', () =>{});
+    p2_sound = loadSound('sounds/kick.ogg', () =>{});
+    p3_sound = loadSound('sounds/closed_hihat.ogg', () =>{});
+    p4_sound = loadSound('sounds/snare.ogg', () =>{});
 }
 
 function setup() {
-    createCanvas(720, 400);
     background(0);
     
     masterVolume(default_volume);
@@ -26,12 +30,17 @@ function setup() {
     noStroke();
     fill(255);
 
-    var boxPhrase = new p5.Phrase('box', (time) => {box.play(time)}, boxPat);
-    var drumPhrase = new p5.Phrase('drum', (time) => {drum.play(time)}, drumPat);
+    var p1Phrase = new p5.Phrase('clap', (time) => {p1_sound.play(time)}, p1);
+    var p2Phrase = new p5.Phrase('kick', (time) => {p2_sound.play(time)}, p2);
+    var p3Phrase = new p5.Phrase('closed_hihat', (time) => {p3_sound.play(time)}, p3);
+    var p4Phrase = new p5.Phrase('snare', (time) => {p4_sound.play(time)}, p4);
+    
     myPart = new p5.Part();
 
-    myPart.addPhrase(boxPhrase);
-    myPart.addPhrase(drumPhrase);
+    myPart.addPhrase(p1Phrase);
+    myPart.addPhrase(p2Phrase);
+    myPart.addPhrase(p3Phrase);
+    myPart.addPhrase(p4Phrase);
 }
 
 
@@ -46,7 +55,7 @@ function changeTempo(val) {
     var tempo = val * 2;
     setBPM(tempo);
     document.getElementById("valueBPM").textContent = tempo + " BPM";
-    console.log("tempo: " + val* 2)
+    //console.log("tempo: " + tempo)
 }
 
 function togglePlay() {
