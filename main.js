@@ -26,10 +26,6 @@ function setup() {
     noStroke();
     fill(255);
 
-    
-    //var boxPhrase = new p5.Phrase('box', playBox, boxPat);
-    //var drumPhrase = new p5.Phrase('drum', playDrum, drumPat);
-
     var boxPhrase = new p5.Phrase('box', (time) => {box.play(time)}, boxPat);
     var drumPhrase = new p5.Phrase('drum', (time) => {drum.play(time)}, drumPat);
     myPart = new p5.Part();
@@ -57,14 +53,3 @@ function togglePlay() {
     playing = !playing;
     console.log("playing set to: " + playing);
 }
-
-/*function playBox(time, playbackRate) {
-  box.rate(playbackRate);
-  box.play(time);
-}
-
-function playDrum(time, playbackRate) {
-  drum.rate(playbackRate);
-  drum.play(time);
-}*/
-
