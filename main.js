@@ -9,10 +9,13 @@ var p2 = [0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0];
 
+var playButton = document.getElementById("playButton");
+var BPMSlider = document.getElementById("sliderBPM");
+var volumeSlider = document.getElementById("volumeSlider");
 
-document.getElementById("playButton").onclick = function() {togglePlay()}; 
-document.getElementById("sliderBPM").oninput = function() {changeTempo(this.value)};
-document.getElementById("volumeSlider").oninput = function() {changeVolume(this.value)};
+playButton.onclick = function() {togglePlay()}; 
+BPMSlider.oninput = function() {changeTempo(this.value)};
+volumeSlider.oninput = function() {changeVolume(this.value)};
 
 function preload() {
     p1_sound = loadSound('sounds/clap.ogg', () =>{});
@@ -35,18 +38,21 @@ function setup() {
     
     myPart = new p5.Part();
 
+    myPart.onStep(function() {onProgress()});
+
     myPart.addPhrase(p1Phrase);
     myPart.addPhrase(p2Phrase);
     myPart.addPhrase(p3Phrase);
     myPart.addPhrase(p4Phrase);
 }
 
-
 function draw() {
-    if(playing)
+
+    if(playing){
         myPart.start();
+    }
     else 
-        myPart.stop();
+        myPart.pause(); // .stop()?
 }
 
 function changeTempo(val) {
@@ -64,4 +70,53 @@ function changeVolume(val) {
 function togglePlay() {
     playing = !playing;
     console.log("playing set to: " + playing);
+}
+
+var step = 0;
+function onProgress() {
+    
+    toggleOnProgress(step);
+    
+    step++;
+    
+    if(step > 7){
+
+        step = 0;
+        console.log(step);
+    }
+}
+
+function toggleOnProgress(val) {
+    if(val == 0){
+        prog0.classList.replace("progress_off", "progress_on");
+        prog7.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 1){
+        prog1.classList.replace("progress_off", "progress_on");
+        prog0.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 2){
+        prog2.classList.replace("progress_off", "progress_on");
+        prog1.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 3){
+        prog3.classList.replace("progress_off", "progress_on");
+        prog2.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 4){
+        prog4.classList.replace("progress_off", "progress_on");
+        prog3.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 5){
+        prog5.classList.replace("progress_off", "progress_on");
+        prog4.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 6){
+        prog6.classList.replace("progress_off", "progress_on");
+        prog5.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 7){
+        prog7.classList.replace("progress_off", "progress_on");
+        prog6.classList.replace("progress_on", "progress_off");
+    }
 }

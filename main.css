@@ -30,3 +30,19 @@ h1{
     width: 90px;
     height: 30px;
 }
+
+.progress_on {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: greenyellow;
+}
+
+.progress_off {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: black;
+}

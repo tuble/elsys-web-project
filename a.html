@@ -18,15 +18,27 @@
 <body>
     <h1>hello.</h1>
     
-    <input type="range" min="10" max="240" step="1" value="40" id="sliderBPM" >
+    <input type="range" min="10" max="240" step="1" value="80" id="sliderBPM" >
     <span id="valueBPM">80 BPM</span>
 
     <br>
-    <input type="range" min="0" max="5" step="0.5" value="0.5" id="volumeSlider" >
+    <input type="range" min="0" max="5" step="0.2" value="0.5" id="volumeSlider" >
     <span id="volumeValue">0.5</span>
 
     <p><button id="playButton">start/stop</button></p>
     <div id ="NOSELECT">
+        <div id ="progress_bar">
+            <div class="sample_name">progress</div>
+            <div id="prog0" class=progress_off></div>
+            <div id="prog1" class=progress_off></div>
+            <div id="prog2" class=progress_off></div>
+            <div id="prog3" class=progress_off></div>
+            <div id="prog4" class=progress_off></div>
+            <div id="prog5" class=progress_off></div>
+            <div id="prog6" class=progress_off></div>
+            <div id="prog7" class=progress_off></div>
+        </div>
+
         <div id ="pat1_container">
             <div class="sample_name">clap</div>
             <div id="p1_0" class=clicked_box></div>
