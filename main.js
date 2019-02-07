@@ -1,4 +1,4 @@
-var p1_sound, p2_sound, myPart;
+var p1_sound, p2_sound, p3_sound, p4_sound, myPart;
 var playing = false;
 var default_volume = 0.5;
 var default_bpm = 80;
@@ -12,7 +12,7 @@ var p4 = [0,0,0,0,0,0,0,0];
 
 document.getElementById("playButton").onclick = function() {togglePlay()}; 
 document.getElementById("sliderBPM").oninput = function() {changeTempo(this.value)};
-
+document.getElementById("volumeSlider").oninput = function() {changeVolume(this.value)};
 
 function preload() {
     p1_sound = loadSound('sounds/clap.ogg', () =>{});
@@ -22,8 +22,6 @@ function preload() {
 }
 
 function setup() {
-    background(0);
-    
     masterVolume(default_volume);
     setBPM(default_bpm);
 
@@ -52,10 +50,15 @@ function draw() {
 }
 
 function changeTempo(val) {
-    var tempo = val * 2;
+    var tempo = val;
     setBPM(tempo);
     document.getElementById("valueBPM").textContent = tempo + " BPM";
-    //console.log("tempo: " + tempo)
+}
+
+function changeVolume(val) {
+    //masterVolume(val);
+    document.getElementById("volumeValue").textContent = val;   
+
 }
 
 function togglePlay() {

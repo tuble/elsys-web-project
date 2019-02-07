@@ -16,15 +16,19 @@
 </head>
 
 <body>
-
     <h1>hello.</h1>
     
-    <input type="range" min="10" max="120" value="40" id="sliderBPM" >
+    <input type="range" min="10" max="240" step="1" value="40" id="sliderBPM" >
     <span id="valueBPM">80 BPM</span>
+
+    <br>
+    <input type="range" min="0" max="5" step="0.5" value="0.5" id="volumeSlider" >
+    <span id="volumeValue">0.5</span>
 
     <p><button id="playButton">start/stop</button></p>
     <div id ="NOSELECT">
-        <div id ="#pat1_container">
+        <div id ="pat1_container">
+            <div class="sample_name">clap</div>
             <div id="p1_0" class=clicked_box></div>
             <div id="p1_1" class=unclicked_box></div>
             <div id="p1_2" class=unclicked_box></div>
@@ -34,7 +38,8 @@
             <div id="p1_6" class=unclicked_box></div>
             <div id="p1_7" class=unclicked_box></div>
         </div>
-        <div id ="#pat2_container">
+        <div id ="pat2_container">
+            <div class="sample_name">kick</div>
             <div id="p2_0" class=unclicked_box></div>
             <div id="p2_1" class=unclicked_box></div>
             <div id="p2_2" class=unclicked_box></div>
@@ -44,7 +49,8 @@
             <div id="p2_6" class=unclicked_box></div>
             <div id="p2_7" class=unclicked_box></div>
         </div>
-        <div id ="#pat3_container">
+        <div id ="pat3_container">
+            <div class="sample_name">closed_hihat</div>
             <div id="p3_0" class=unclicked_box></div>
             <div id="p3_1" class=unclicked_box></div>
             <div id="p3_2" class=unclicked_box></div>
@@ -54,7 +60,8 @@
             <div id="p3_6" class=unclicked_box></div>
             <div id="p3_7" class=unclicked_box></div>
         </div>
-        <div id ="#pat4_container">
+        <div id ="pat4_container">
+            <div class="sample_name">snare</div>
             <div id="p4_0" class=unclicked_box></div>
             <div id="p4_1" class=unclicked_box></div>
             <div id="p4_2" class=unclicked_box></div>
