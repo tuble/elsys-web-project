@@ -12,10 +12,12 @@ var p4 = [0,0,0,0,0,0,0,0];
 var playButton = document.getElementById("playButton");
 var BPMSlider = document.getElementById("sliderBPM");
 var volumeSlider = document.getElementById("volumeSlider");
+var clearButton = document.getElementById("clear");
 
 playButton.onclick = function() {togglePlay()}; 
 BPMSlider.oninput = function() {changeTempo(this.value)};
 volumeSlider.oninput = function() {changeVolume(this.value)};
+clearButton.onclick = function() {clearAll()};
 
 function preload() {
     p1_sound = loadSound('sounds/clap.ogg', () =>{});
@@ -71,6 +73,21 @@ function togglePlay() {
     playing = !playing;
     console.log("playing set to: " + playing);
 }
+
+function clearAll() {
+
+    playing = false;
+    p1 = [0,0,0,0,0,0,0,0];
+    p2 = [0,0,0,0,0,0,0,0];
+    p3 = [0,0,0,0,0,0,0,0];
+    p4 = [0,0,0,0,0,0,0,0];
+
+    console.log(p1);
+
+    // buttons are stil on
+
+}
+
 
 var step = 0;
 function onProgress() {
