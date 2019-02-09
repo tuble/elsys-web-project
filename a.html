@@ -1,100 +1,97 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>web-project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="libs/p5.js" type="text/javascript"></script>
-    <script src="libs/p5.sound.js" type="text/javascript"></script>
-    <script src="main.js" type="text/javascript" defer></script>
-    <script src="controlPattern1.js" type="text/javascript" defer></script>
-    <script src="controlPattern2.js" type="text/javascript" defer></script>
-    <script src="controlPattern3.js" type="text/javascript" defer></script>
-    <script src="controlPattern4.js" type="text/javascript" defer></script>
-
-</head>
-
-<body>
-    <h1>hello.</h1>
+    <head>
+        <meta charset="utf-8" />
+        <title>web-project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script src="libs/p5.js" type="text/javascript"></script>
+        <script src="libs/p5.sound.js" type="text/javascript"></script>
+        <script src="main.js" type="text/javascript" defer></script>
+        <script src="controlPattern1.js" type="text/javascript" defer></script>
+        <script src="controlPattern2.js" type="text/javascript" defer></script>
+        <script src="controlPattern3.js" type="text/javascript" defer></script>
+        <script src="controlPattern4.js" type="text/javascript" defer></script>
     
-    <input type="range" min="10" max="240" step="1" value="80" id="sliderBPM" >
-    <span id="valueBPM">80 BPM</span>
+    </head>
+    
+    <body>
+        <h1>hello.</h1>
+        
+        <p><span class="centered_text">tempo: </span><input type="range" min="10" max="240" step="1" value="80" id="sliderBPM" > <span class="centered_text" id="valueBPM">80 BPM</span></p>
+        <p><span class="centered_text">volume: </span><input type="range" min="0" max="5" step="0.2" value="0.5" id="volumeSlider" > <span class="centered_text" id="volumeValue">0.5</span></p>
+        
+        <span ><button id="playButton">start/stop</button> <button id="clearButton">clear all</button></span>
+        <hr>    
+    
+        <div id ="NOSELECT">
+            <div  id ="progress_bar">
+                <div class="centered_text">progress</div>
+                <div id="prog0" class=progress_off></div>
+                <div id="prog1" class=progress_off></div>
+                <div id="prog2" class=progress_off></div>
+                <div id="prog3" class=progress_off></div>
+                <div id="prog4" class=progress_off></div>
+                <div id="prog5" class=progress_off></div>
+                <div id="prog6" class=progress_off></div>
+                <div id="prog7" class=progress_off></div>
+            </div>
 
-    <br>
-    <input type="range" min="0" max="5" step="0.2" value="0.5" id="volumeSlider" >
-    <span id="volumeValue">0.5</span>
+            <div id ="pat1_container">
+                <div id="pat1_name" class="centered_text">sample_name</div>
+                <div id="p1_0" class=clicked_box></div>
+                <div id="p1_1" class=unclicked_box></div>
+                <div id="p1_2" class=unclicked_box></div>
+                <div id="p1_3" class=unclicked_box></div>
+                <div id="p1_4" class=unclicked_box></div>
+                <div id="p1_5" class=unclicked_box></div>
+                <div id="p1_6" class=unclicked_box></div>
+                <div id="p1_7" class=unclicked_box></div>
+                <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat1VolumeSlider" >
+                <span id="pat1VolumeValue">0.5</span>
+            </div>
 
-    <p><button id="playButton">start/stop</button></p>
-    <p><button id="clearButton">clear all</button></p>
+            <div id ="pat2_container">
+                <div id="pat2_name" class="centered_text">sample_name</div>
+                <div id="p2_0" class=unclicked_box></div>
+                <div id="p2_1" class=unclicked_box></div>
+                <div id="p2_2" class=unclicked_box></div>
+                <div id="p2_3" class=unclicked_box></div>
+                <div id="p2_4" class=unclicked_box></div>
+                <div id="p2_5" class=unclicked_box></div>
+                <div id="p2_6" class=unclicked_box></div>
+                <div id="p2_7" class=unclicked_box></div>
+                <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat2VolumeSlider" >
+                <span id="pat2VolumeValue">0.5</span>
+            </div>
 
-    <div id ="NOSELECT">
-        <div id ="progress_bar">
-            <div class="sample_name">progress</div>
-            <div id="prog0" class=progress_off></div>
-            <div id="prog1" class=progress_off></div>
-            <div id="prog2" class=progress_off></div>
-            <div id="prog3" class=progress_off></div>
-            <div id="prog4" class=progress_off></div>
-            <div id="prog5" class=progress_off></div>
-            <div id="prog6" class=progress_off></div>
-            <div id="prog7" class=progress_off></div>
+            <div id ="pat3_container">
+                <div id="pat3_name" class="centered_text">sample_name</div>
+                <div id="p3_0" class=unclicked_box></div>
+                <div id="p3_1" class=unclicked_box></div>
+                <div id="p3_2" class=unclicked_box></div>
+                <div id="p3_3" class=unclicked_box></div>
+                <div id="p3_4" class=unclicked_box></div>
+                <div id="p3_5" class=unclicked_box></div>
+                <div id="p3_6" class=unclicked_box></div>
+                <div id="p3_7" class=unclicked_box></div>
+                <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat3VolumeSlider" >
+                <span id="pat3VolumeValue">0.5</span>
+            </div>
+
+            <div id ="pat4_container">
+                <div id="pat4_name" class="centered_text">sample_name</div>
+                <div id="p4_0" class=unclicked_box></div>
+                <div id="p4_1" class=unclicked_box></div>
+                <div id="p4_2" class=unclicked_box></div>
+                <div id="p4_3" class=unclicked_box></div>
+                <div id="p4_4" class=unclicked_box></div>
+                <div id="p4_5" class=unclicked_box></div>
+                <div id="p4_6" class=unclicked_box></div>
+                <div id="p4_7" class=unclicked_box></div>
+                <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat4VolumeSlider" >
+                <span id="pat4VolumeValue">0.5</span>
         </div>
-
-        <div id ="pat1_container">
-            <div id="pat1_name" class="sample_name">sample_name</div>
-            <div id="p1_0" class=clicked_box></div>
-            <div id="p1_1" class=unclicked_box></div>
-            <div id="p1_2" class=unclicked_box></div>
-            <div id="p1_3" class=unclicked_box></div>
-            <div id="p1_4" class=unclicked_box></div>
-            <div id="p1_5" class=unclicked_box></div>
-            <div id="p1_6" class=unclicked_box></div>
-            <div id="p1_7" class=unclicked_box></div>
-            <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat1VolumeSlider" >
-            <span id="pat1VolumeValue">0.5</span>
-        </div>
-        <div id ="pat2_container">
-            <div id="pat2_name" class="sample_name">sample_name</div>
-            <div id="p2_0" class=unclicked_box></div>
-            <div id="p2_1" class=unclicked_box></div>
-            <div id="p2_2" class=unclicked_box></div>
-            <div id="p2_3" class=unclicked_box></div>
-            <div id="p2_4" class=unclicked_box></div>
-            <div id="p2_5" class=unclicked_box></div>
-            <div id="p2_6" class=unclicked_box></div>
-            <div id="p2_7" class=unclicked_box></div>
-            <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat2VolumeSlider" >
-            <span id="pat2VolumeValue">0.5</span>
-        </div>
-        <div id ="pat3_container">
-            <div id="pat3_name" class="sample_name">sample_name</div>
-            <div id="p3_0" class=unclicked_box></div>
-            <div id="p3_1" class=unclicked_box></div>
-            <div id="p3_2" class=unclicked_box></div>
-            <div id="p3_3" class=unclicked_box></div>
-            <div id="p3_4" class=unclicked_box></div>
-            <div id="p3_5" class=unclicked_box></div>
-            <div id="p3_6" class=unclicked_box></div>
-            <div id="p3_7" class=unclicked_box></div>
-            <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat3VolumeSlider" >
-            <span id="pat3VolumeValue">0.5</span>
-        </div>
-        <div id ="pat4_container">
-            <div id="pat4_name" class="sample_name">sample_name</div>
-            <div id="p4_0" class=unclicked_box></div>
-            <div id="p4_1" class=unclicked_box></div>
-            <div id="p4_2" class=unclicked_box></div>
-            <div id="p4_3" class=unclicked_box></div>
-            <div id="p4_4" class=unclicked_box></div>
-            <div id="p4_5" class=unclicked_box></div>
-            <div id="p4_6" class=unclicked_box></div>
-            <div id="p4_7" class=unclicked_box></div>
-            <input type="range" min="0" max="1" step="0.2" value="0.5" id="pat4VolumeSlider" >
-            <span id="pat4VolumeValue">0.5</span>
-        </div>
-    </div>
-
-
-</body>
+    
+    </body>
 </html>

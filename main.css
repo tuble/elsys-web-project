@@ -25,7 +25,8 @@ h1{
     background-color: tomato;
 }
 
-.sample_name {
+.centered_text {
+    margin: auto;
     display: inline-block;
     width: 90px;
     height: 30px;

@@ -15,7 +15,7 @@ var prog5 = document.getElementById("prog5");
 var prog6 = document.getElementById("prog6");
 var prog7 = document.getElementById("prog7");
 
-var p0 = [1,1,1,1,1,1,1,1]; // progress bar; value doesnt' matter
+var p0 = [1,1,1,1,1,1,1,1]; // progress bar; value doesn't matter
 var p1 = [1,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0];
@@ -75,12 +75,17 @@ function setup() {
     myPart.addPhrase(p4Phrase);
 }
 
+
 function draw() {
     if(playing){
         myPart.start();
+        playButton.textContent = "stop";
     }
-    else 
+    else {
         myPart.pause(); // .stop()?
+        playButton.textContent = "start";
+    }
+        
 }
 
 function changeTempo(val) {
