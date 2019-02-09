@@ -17,7 +17,7 @@ var p1 = [1,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0];
-
+``
 var p1Phrase;
 var p2Phrase;
 var p3Phrase;
@@ -101,7 +101,7 @@ function togglePlay() {
     console.log("playing set to: " + playing);
 }
 
-function clearAll() {
+/*function clearAll() {
     playing = false; // not mandatory
     p1 = [0,0,0,0,0,0,0,0];
     p2 = [0,0,0,0,0,0,0,0];
@@ -111,7 +111,7 @@ function clearAll() {
     console.log(p1);
 
     // buttons are stil on
-}
+}*/
 
 var step = 0;
 function onProgress() {
