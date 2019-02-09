@@ -13,11 +13,13 @@ var prog5 = document.getElementById("prog5");
 var prog6 = document.getElementById("prog6");
 var prog7 = document.getElementById("prog7");
 
+var p0 = [1,1,1,1,1,1,1,1]; // progress bar; value doesnt' matter
 var p1 = [1,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0];
-``
+
+var p0Phrase; // progress bar
 var p1Phrase;
 var p2Phrase;
 var p3Phrase;
@@ -51,6 +53,7 @@ function setup() {
     noStroke();
     fill(255);
 
+    p0Phrase = new p5.Phrase('progress', function() {onProgress()}, p0); // progress bar
     p1Phrase = new p5.Phrase('clap', (time) => {p1_sound.play(time)}, p1);
     p2Phrase = new p5.Phrase('kick', (time) => {p2_sound.play(time)}, p2);
     p3Phrase = new p5.Phrase('closed_hihat', (time) => {p3_sound.play(time)}, p3);
@@ -63,8 +66,7 @@ function setup() {
     
     myPart = new p5.Part();
 
-    //myPart.onStep(function() {onProgress()}); // for progress bar
-    //myPart.onStep(function() {console.log("step")}); 
+    myPart.addPhrase(p0Phrase);
     myPart.addPhrase(p1Phrase);
     myPart.addPhrase(p2Phrase);
     myPart.addPhrase(p3Phrase);
@@ -72,7 +74,6 @@ function setup() {
 }
 
 function draw() {
-
     if(playing){
         myPart.start();
     }
@@ -115,13 +116,12 @@ function togglePlay() {
 
 var step = 0;
 function onProgress() {
-    console.log(step);
+    //console.log(step);
     toggleOnProgress(step);
     
     step++;
     
     if(step > 7){
-
         step = 0;
     }
 }
