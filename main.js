@@ -4,15 +4,33 @@ var default_volume = 0.5;
 var default_bpm = 80;
 var vol;
 
+var prog0 = document.getElementById("prog0");
+var prog1 = document.getElementById("prog1");
+var prog2 = document.getElementById("prog2");
+var prog3 = document.getElementById("prog3");
+var prog4 = document.getElementById("prog4");
+var prog5 = document.getElementById("prog5");
+var prog6 = document.getElementById("prog6");
+var prog7 = document.getElementById("prog7");
+
 var p1 = [1,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0];
 
+var p1Phrase;
+var p2Phrase;
+var p3Phrase;
+var p4Phrase;
+
 var playButton = document.getElementById("playButton");
 var BPMSlider = document.getElementById("sliderBPM");
 var volumeSlider = document.getElementById("volumeSlider");
-var clearButton = document.getElementById("clear");
+var clearButton = document.getElementById("clearButton");
+
+var pat1VolumeSlider = document.getElementById("pat1VolumeSlider");
+
+pat1VolumeSlider.oninput = function() {changePat1Volume(this.value)};
 
 playButton.onclick = function() {togglePlay()}; 
 BPMSlider.oninput = function() {changeTempo(this.value)};
@@ -33,15 +51,20 @@ function setup() {
     noStroke();
     fill(255);
 
-    var p1Phrase = new p5.Phrase('clap', (time) => {p1_sound.play(time)}, p1);
-    var p2Phrase = new p5.Phrase('kick', (time) => {p2_sound.play(time)}, p2);
-    var p3Phrase = new p5.Phrase('closed_hihat', (time) => {p3_sound.play(time)}, p3);
-    var p4Phrase = new p5.Phrase('snare', (time) => {p4_sound.play(time)}, p4);
+    p1Phrase = new p5.Phrase('clap', (time) => {p1_sound.play(time)}, p1);
+    p2Phrase = new p5.Phrase('kick', (time) => {p2_sound.play(time)}, p2);
+    p3Phrase = new p5.Phrase('closed_hihat', (time) => {p3_sound.play(time)}, p3);
+    p4Phrase = new p5.Phrase('snare', (time) => {p4_sound.play(time)}, p4);
+
+    document.getElementById("pat1_name").textContent = p1Phrase.name;
+    document.getElementById("pat2_name").textContent = p2Phrase.name;
+    document.getElementById("pat3_name").textContent = p3Phrase.name;
+    document.getElementById("pat4_name").textContent = p4Phrase.name;
     
     myPart = new p5.Part();
 
-    myPart.onStep(function() {onProgress()});
-
+    //myPart.onStep(function() {onProgress()}); // for progress bar
+    //myPart.onStep(function() {console.log("step")}); 
     myPart.addPhrase(p1Phrase);
     myPart.addPhrase(p2Phrase);
     myPart.addPhrase(p3Phrase);
@@ -64,9 +87,13 @@ function changeTempo(val) {
 }
 
 function changeVolume(val) {
-    //masterVolume(val);
-    document.getElementById("volumeValue").textContent = val;   
+    myPart.setVolume(val);
+    document.getElementById("volumeValue").textContent = val;
+}
 
+function changePat1Volume(val) {
+    p1_sound.setVolume(val);
+    document.getElementById("pat1VolumeValue").textContent = val;
 }
 
 function togglePlay() {
@@ -75,8 +102,7 @@ function togglePlay() {
 }
 
 function clearAll() {
-
-    playing = false;
+    playing = false; // not mandatory
     p1 = [0,0,0,0,0,0,0,0];
     p2 = [0,0,0,0,0,0,0,0];
     p3 = [0,0,0,0,0,0,0,0];
@@ -85,13 +111,11 @@ function clearAll() {
     console.log(p1);
 
     // buttons are stil on
-
 }
-
 
 var step = 0;
 function onProgress() {
-    
+    console.log(step);
     toggleOnProgress(step);
     
     step++;
@@ -99,13 +123,8 @@ function onProgress() {
     if(step > 7){
 
         step = 0;
-        console.log(step);
     }
 }
-
-function mousePressed() { // work around because of chrome70 disableing web audio by default
-     getAudioContext().resume()
-} 
 
 function toggleOnProgress(val) {
     if(val == 0){
@@ -141,3 +160,7 @@ function toggleOnProgress(val) {
         prog6.classList.replace("progress_on", "progress_off");
     }
 }
+
+function mousePressed() { // work around because of chrome70 disabling web audio by default
+    getAudioContext().resume()
+} 
