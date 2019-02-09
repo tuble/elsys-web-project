@@ -108,7 +108,7 @@ function clearAll() {
     playing = false; 
     myPart.pause(); 
 
-    for(var i = 0; i < steps_count; i++){
+    for(var i = 0; i <= steps_count; i++){
         p1[i] = 0;
         p2[i] = 0;
         p3[i] = 0;
