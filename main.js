@@ -4,6 +4,8 @@ var default_volume = 0.5;
 var default_bpm = 80;
 var vol;
 
+var steps_count = 7;
+
 var prog0 = document.getElementById("prog0");
 var prog1 = document.getElementById("prog1");
 var prog2 = document.getElementById("prog2");
@@ -102,17 +104,18 @@ function togglePlay() {
     console.log("playing set to: " + playing);
 }
 
-/*function clearAll() {
-    playing = false; // not mandatory
-    p1 = [0,0,0,0,0,0,0,0];
-    p2 = [0,0,0,0,0,0,0,0];
-    p3 = [0,0,0,0,0,0,0,0];
-    p4 = [0,0,0,0,0,0,0,0];
+function clearAll() {
+    playing = false; 
+    myPart.pause(); 
 
-    console.log(p1);
-
-    // buttons are stil on
-}*/
+    for(var i = 0; i < steps_count; i++){
+        p1[i] = 0;
+        p2[i] = 0;
+        p3[i] = 0;
+        p4[i] = 0;
+    }
+    disbleAllSteps();
+}
 
 var step = 0;
 function onProgress() {
@@ -161,6 +164,44 @@ function toggleOnProgress(val) {
     }
 }
 
-function mousePressed() { // work around because of chrome70 disabling web audio by default
+function disbleAllSteps() { // ew
+    p1_0.classList.replace("clicked_box", "unclicked_box");
+    p1_1.classList.replace("clicked_box", "unclicked_box");
+    p1_2.classList.replace("clicked_box", "unclicked_box");
+    p1_3.classList.replace("clicked_box", "unclicked_box");
+    p1_4.classList.replace("clicked_box", "unclicked_box");
+    p1_5.classList.replace("clicked_box", "unclicked_box");
+    p1_6.classList.replace("clicked_box", "unclicked_box");
+    p1_7.classList.replace("clicked_box", "unclicked_box");
+
+    p2_0.classList.replace("clicked_box", "unclicked_box");
+    p2_1.classList.replace("clicked_box", "unclicked_box");
+    p2_2.classList.replace("clicked_box", "unclicked_box");
+    p2_3.classList.replace("clicked_box", "unclicked_box");
+    p2_4.classList.replace("clicked_box", "unclicked_box");
+    p2_5.classList.replace("clicked_box", "unclicked_box");
+    p2_6.classList.replace("clicked_box", "unclicked_box");
+    p2_7.classList.replace("clicked_box", "unclicked_box");
+
+    p3_0.classList.replace("clicked_box", "unclicked_box");
+    p3_1.classList.replace("clicked_box", "unclicked_box");
+    p3_2.classList.replace("clicked_box", "unclicked_box");
+    p3_3.classList.replace("clicked_box", "unclicked_box");
+    p3_4.classList.replace("clicked_box", "unclicked_box");
+    p3_5.classList.replace("clicked_box", "unclicked_box");
+    p3_6.classList.replace("clicked_box", "unclicked_box");
+    p3_7.classList.replace("clicked_box", "unclicked_box");
+
+    p4_0.classList.replace("clicked_box", "unclicked_box");
+    p4_1.classList.replace("clicked_box", "unclicked_box");
+    p4_2.classList.replace("clicked_box", "unclicked_box");
+    p4_3.classList.replace("clicked_box", "unclicked_box");
+    p4_4.classList.replace("clicked_box", "unclicked_box");
+    p4_5.classList.replace("clicked_box", "unclicked_box");
+    p4_6.classList.replace("clicked_box", "unclicked_box");
+    p4_7.classList.replace("clicked_box", "unclicked_box");
+}
+
+function mousePressed() { // because of chrome70 disabling web audio by default
     getAudioContext().resume()
 } 
