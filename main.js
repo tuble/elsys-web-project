@@ -103,6 +103,10 @@ function onProgress() {
     }
 }
 
+function mousePressed() { // work around because of chrome70 disableing web audio by default
+     getAudioContext().resume()
+} 
+
 function toggleOnProgress(val) {
     if(val == 0){
         prog0.classList.replace("progress_off", "progress_on");
