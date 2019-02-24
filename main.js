@@ -3,8 +3,7 @@ var playing = false;
 var default_volume = 0.5;
 var default_bpm = 80;
 var vol;
-
-var steps_count = 7;
+var steps_count = 16;
 
 var prog0 = document.getElementById("prog0");
 var prog1 = document.getElementById("prog1");
@@ -15,11 +14,11 @@ var prog5 = document.getElementById("prog5");
 var prog6 = document.getElementById("prog6");
 var prog7 = document.getElementById("prog7");
 
-var p0 = [1,1,1,1,1,1,1,1]; // progress bar; value doesn't matter
-var p1 = [1,0,0,0,0,0,0,0];
-var p2 = [0,0,0,0,0,0,0,0];
-var p3 = [0,0,0,0,0,0,0,0];
-var p4 = [0,0,0,0,0,0,0,0];
+var p0 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // progress bar; value doesn't matter
+var p1 = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var p2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var p3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var p4 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 var p0Phrase; // progress bar
 var p1Phrase;
@@ -32,7 +31,7 @@ var BPMSlider = document.getElementById("sliderBPM");
 var volumeSlider = document.getElementById("volumeSlider");
 var clearButton = document.getElementById("clearButton");
 
-var pat1VolumeSlider = document.getElementById("pat1VolumeSlider");
+var pat1VolumeSlider = document.getElementById("pat1VolumeSlider"); // todo: other sliders
 
 pat1VolumeSlider.oninput = function() {changePat1Volume(this.value)};
 
@@ -75,7 +74,6 @@ function setup() {
     myPart.addPhrase(p4Phrase);
 }
 
-
 function draw() {
     if(playing){
         myPart.start();
@@ -85,7 +83,6 @@ function draw() {
         myPart.pause(); // .stop()?
         playButton.textContent = "start";
     }
-        
 }
 
 function changeTempo(val) {
@@ -95,7 +92,8 @@ function changeTempo(val) {
 }
 
 function changeVolume(val) {
-    myPart.setVolume(val);
+    //myPart.setVolume(val);
+    masterVolume(val);
     document.getElementById("volumeValue").textContent = val;
 }
 
@@ -113,7 +111,7 @@ function clearAll() {
     playing = false; 
     myPart.pause(); 
 
-    for(var i = 0; i <= steps_count; i++){
+    for(var i = 0; i <= steps_count - 1; i++){
         p1[i] = 0;
         p2[i] = 0;
         p3[i] = 0;
@@ -129,7 +127,7 @@ function onProgress() {
     
     step++;
     
-    if(step > 7){
+    if(step > steps_count - 1){
         step = 0;
     }
 }
@@ -137,7 +135,7 @@ function onProgress() {
 function toggleOnProgress(val) {
     if(val == 0){
         prog0.classList.replace("progress_off", "progress_on");
-        prog7.classList.replace("progress_on", "progress_off");
+        prog15.classList.replace("progress_on", "progress_off");
     }
     if(val == 1){
         prog1.classList.replace("progress_off", "progress_on");
@@ -167,6 +165,38 @@ function toggleOnProgress(val) {
         prog7.classList.replace("progress_off", "progress_on");
         prog6.classList.replace("progress_on", "progress_off");
     }
+    if(val == 8){
+        prog8.classList.replace("progress_off", "progress_on");
+        prog7.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 9){
+        prog9.classList.replace("progress_off", "progress_on");
+        prog8.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 10){
+        prog10.classList.replace("progress_off", "progress_on");
+        prog9.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 11){
+        prog11.classList.replace("progress_off", "progress_on");
+        prog10.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 12){
+        prog12.classList.replace("progress_off", "progress_on");
+        prog11.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 13){
+        prog13.classList.replace("progress_off", "progress_on");
+        prog12.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 14){
+        prog14.classList.replace("progress_off", "progress_on");
+        prog13.classList.replace("progress_on", "progress_off");
+    }
+    if(val == 15){
+        prog15.classList.replace("progress_off", "progress_on");
+        prog14.classList.replace("progress_on", "progress_off");
+    }
 }
 
 function disbleAllSteps() { // ew
@@ -178,6 +208,14 @@ function disbleAllSteps() { // ew
     p1_5.classList.replace("clicked_box", "unclicked_box");
     p1_6.classList.replace("clicked_box", "unclicked_box");
     p1_7.classList.replace("clicked_box", "unclicked_box");
+    p1_8.classList.replace("clicked_box", "unclicked_box");
+    p1_9.classList.replace("clicked_box", "unclicked_box");
+    p1_10.classList.replace("clicked_box", "unclicked_box");
+    p1_11.classList.replace("clicked_box", "unclicked_box");
+    p1_12.classList.replace("clicked_box", "unclicked_box");
+    p1_13.classList.replace("clicked_box", "unclicked_box");
+    p1_14.classList.replace("clicked_box", "unclicked_box");
+    p1_15.classList.replace("clicked_box", "unclicked_box");
 
     p2_0.classList.replace("clicked_box", "unclicked_box");
     p2_1.classList.replace("clicked_box", "unclicked_box");
