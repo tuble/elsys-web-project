@@ -1,3 +1,10 @@
+class Pattern {
+    constructor(logic_pattern, graphic_pattern) {
+        this.logic_pattern = logic_pattern;
+        this.graphic_pattern = graphic_pattern;
+    }
+}
+
 var p1_sound, p2_sound, p3_sound, p4_sound, myPart;
 var playing = false;
 var default_volume = 0.5;
@@ -14,11 +21,22 @@ var prog5 = document.getElementById("prog5");
 var prog6 = document.getElementById("prog6");
 var prog7 = document.getElementById("prog7");
 
+var pat1 = document.getElementsByClassName("pattern_1");
+var pat2 = document.getElementsByClassName("pattern_2");
+var pat3 = document.getElementsByClassName("pattern_3");
+var pat4 = document.getElementsByClassName("pattern_4");
+
+
 var p0 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // progress bar; value doesn't matter
-var p1 = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var p1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+var pattern1 = new Pattern(p1, pat1);
+var pattern2 = new Pattern(p2, pat2);
+var pattern3 = new Pattern(p3, pat3);
+var pattern4 = new Pattern(p4, pat4);
 
 var p0Phrase; // progress bar
 var p1Phrase;
@@ -225,6 +243,14 @@ function disbleAllSteps() { // ew
     p2_5.classList.replace("clicked_box", "unclicked_box");
     p2_6.classList.replace("clicked_box", "unclicked_box");
     p2_7.classList.replace("clicked_box", "unclicked_box");
+    p2_8.classList.replace("clicked_box", "unclicked_box");
+    p2_9.classList.replace("clicked_box", "unclicked_box");
+    p2_10.classList.replace("clicked_box", "unclicked_box");
+    p2_11.classList.replace("clicked_box", "unclicked_box");
+    p2_12.classList.replace("clicked_box", "unclicked_box");
+    p2_13.classList.replace("clicked_box", "unclicked_box");
+    p2_14.classList.replace("clicked_box", "unclicked_box");
+    p2_15.classList.replace("clicked_box", "unclicked_box");
 
     p3_0.classList.replace("clicked_box", "unclicked_box");
     p3_1.classList.replace("clicked_box", "unclicked_box");
@@ -234,6 +260,15 @@ function disbleAllSteps() { // ew
     p3_5.classList.replace("clicked_box", "unclicked_box");
     p3_6.classList.replace("clicked_box", "unclicked_box");
     p3_7.classList.replace("clicked_box", "unclicked_box");
+    p3_8.classList.replace("clicked_box", "unclicked_box");
+    p3_9.classList.replace("clicked_box", "unclicked_box");
+    p3_10.classList.replace("clicked_box", "unclicked_box");
+    p3_11.classList.replace("clicked_box", "unclicked_box");
+    p3_12.classList.replace("clicked_box", "unclicked_box");
+    p3_13.classList.replace("clicked_box", "unclicked_box");
+    p3_14.classList.replace("clicked_box", "unclicked_box");
+    p3_15.classList.replace("clicked_box", "unclicked_box");
+
 
     p4_0.classList.replace("clicked_box", "unclicked_box");
     p4_1.classList.replace("clicked_box", "unclicked_box");
@@ -243,6 +278,15 @@ function disbleAllSteps() { // ew
     p4_5.classList.replace("clicked_box", "unclicked_box");
     p4_6.classList.replace("clicked_box", "unclicked_box");
     p4_7.classList.replace("clicked_box", "unclicked_box");
+    p4_8.classList.replace("clicked_box", "unclicked_box");
+    p4_9.classList.replace("clicked_box", "unclicked_box");
+    p4_10.classList.replace("clicked_box", "unclicked_box");
+    p4_11.classList.replace("clicked_box", "unclicked_box");
+    p4_12.classList.replace("clicked_box", "unclicked_box");
+    p4_13.classList.replace("clicked_box", "unclicked_box");
+    p4_14.classList.replace("clicked_box", "unclicked_box");
+    p4_15.classList.replace("clicked_box", "unclicked_box");
+
 }
 
 function mousePressed() { // because of chrome70 disabling web audio by default

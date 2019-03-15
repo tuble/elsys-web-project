@@ -1,5 +1,28 @@
-h1{
-    color: tomato;
+#okc{
+    color: black;
+    background-color: #0181CA;
+    text-align: center;
+}
+
+::selection{
+    background: #f74a2c;
+}
+
+#markings, #progress_bar, #pat1_container, #pat2_container, #pat3_container, #pat4_container {
+    height: 36px;
+}
+
+html{
+    background-color: #ffffff;
+    font-family: Arial;
+}
+
+/* OPTIMIZEEEEE */
+
+/* DYNAMIC SCALING?? */
+
+#controls {
+    padding-bottom: 1.5%;
 }
 
 #NOSELECT {
@@ -7,14 +30,21 @@ h1{
     -moz-user-select: none; /* Firefox 2+ */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Standard syntax */
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width=device-width;
 }
 
-.unclicked_box {
+.markings{
     display: inline-block;
     width: 30px;
     height: 30px;
-    border: 1px solid black;
-    background-color: cornflowerblue;
+    /*background-color: #F4F6F5;*/
+    border: 1px solid #ffffff;
+    text-align: center;
+    line-height: 30px; 
 }
 
 .clicked_box {
@@ -22,14 +52,15 @@ h1{
     width: 30px;
     height: 30px;
     border: 1px solid black;
-    background-color: tomato;
+    background-color: #f74a2c;
 }
 
-.centered_text {
-    margin: auto;
+.unclicked_box {
     display: inline-block;
-    width: 90px;
+    width: 30px;
     height: 30px;
+    border: 1px solid black;
+    background-color: #0B91CE;
 }
 
 .progress_on {
@@ -37,7 +68,8 @@ h1{
     width: 30px;
     height: 30px;
     border: 1px solid black;
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
+    background-color: #f74a2c;
 }
 
 .progress_off {
@@ -47,3 +79,15 @@ h1{
     border: 1px solid black;
     background-color: black;
 }
+
+.centered_text {
+    vertical-align:top;
+    display: inline-block;
+    width: 90px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    line-height: 30px;   /*for text position*/
+    padding-right: 1%;
+
+}
+    
