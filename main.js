@@ -21,18 +21,20 @@ var prog5 = document.getElementById("prog5");
 var prog6 = document.getElementById("prog6");
 var prog7 = document.getElementById("prog7");
 
+var pat0 = document.getElementsByClassName("pattern_0");
 var pat1 = document.getElementsByClassName("pattern_1");
 var pat2 = document.getElementsByClassName("pattern_2");
 var pat3 = document.getElementsByClassName("pattern_3");
 var pat4 = document.getElementsByClassName("pattern_4");
 
 
-var p0 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // progress bar; value doesn't matter
+var p0 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; // progress bar
 var p1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p3 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 var p4 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
+var pattern0 = new Pattern(p0, pat0); // progress bar
 var pattern1 = new Pattern(p1, pat1);
 var pattern2 = new Pattern(p2, pat2);
 var pattern3 = new Pattern(p3, pat3);
@@ -141,151 +143,30 @@ function clearAll() {
 var step = 0;
 function onProgress() {
     //console.log(step);
-    toggleOnProgress(step);
-    
-    step++;
-    
-    if(step > steps_count - 1){
+    if(step == steps_count){
         step = 0;
     }
+
+    if(step == 0) {
+        pattern0.graphic_pattern[step].classList.replace("progress_off", "progress_on");
+        pattern0.graphic_pattern[steps_count - 1].classList.replace("progress_on", "progress_off");
+    } else {
+        pattern0.graphic_pattern[step].classList.replace("progress_off", "progress_on");
+        pattern0.graphic_pattern[step - 1].classList.replace("progress_on", "progress_off");
+    }
+
+    step++;
+    
 }
 
-function toggleOnProgress(val) {
-    if(val == 0){
-        prog0.classList.replace("progress_off", "progress_on");
-        prog15.classList.replace("progress_on", "progress_off");
+function disbleAllSteps() {
+  
+    for(var i = 0; i < steps_count; i++) {
+        pattern1.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
+        pattern2.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
+        pattern3.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
+        pattern4.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
     }
-    if(val == 1){
-        prog1.classList.replace("progress_off", "progress_on");
-        prog0.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 2){
-        prog2.classList.replace("progress_off", "progress_on");
-        prog1.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 3){
-        prog3.classList.replace("progress_off", "progress_on");
-        prog2.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 4){
-        prog4.classList.replace("progress_off", "progress_on");
-        prog3.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 5){
-        prog5.classList.replace("progress_off", "progress_on");
-        prog4.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 6){
-        prog6.classList.replace("progress_off", "progress_on");
-        prog5.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 7){
-        prog7.classList.replace("progress_off", "progress_on");
-        prog6.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 8){
-        prog8.classList.replace("progress_off", "progress_on");
-        prog7.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 9){
-        prog9.classList.replace("progress_off", "progress_on");
-        prog8.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 10){
-        prog10.classList.replace("progress_off", "progress_on");
-        prog9.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 11){
-        prog11.classList.replace("progress_off", "progress_on");
-        prog10.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 12){
-        prog12.classList.replace("progress_off", "progress_on");
-        prog11.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 13){
-        prog13.classList.replace("progress_off", "progress_on");
-        prog12.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 14){
-        prog14.classList.replace("progress_off", "progress_on");
-        prog13.classList.replace("progress_on", "progress_off");
-    }
-    if(val == 15){
-        prog15.classList.replace("progress_off", "progress_on");
-        prog14.classList.replace("progress_on", "progress_off");
-    }
-}
-
-function disbleAllSteps() { // ew
-    p1_0.classList.replace("clicked_box", "unclicked_box");
-    p1_1.classList.replace("clicked_box", "unclicked_box");
-    p1_2.classList.replace("clicked_box", "unclicked_box");
-    p1_3.classList.replace("clicked_box", "unclicked_box");
-    p1_4.classList.replace("clicked_box", "unclicked_box");
-    p1_5.classList.replace("clicked_box", "unclicked_box");
-    p1_6.classList.replace("clicked_box", "unclicked_box");
-    p1_7.classList.replace("clicked_box", "unclicked_box");
-    p1_8.classList.replace("clicked_box", "unclicked_box");
-    p1_9.classList.replace("clicked_box", "unclicked_box");
-    p1_10.classList.replace("clicked_box", "unclicked_box");
-    p1_11.classList.replace("clicked_box", "unclicked_box");
-    p1_12.classList.replace("clicked_box", "unclicked_box");
-    p1_13.classList.replace("clicked_box", "unclicked_box");
-    p1_14.classList.replace("clicked_box", "unclicked_box");
-    p1_15.classList.replace("clicked_box", "unclicked_box");
-
-    p2_0.classList.replace("clicked_box", "unclicked_box");
-    p2_1.classList.replace("clicked_box", "unclicked_box");
-    p2_2.classList.replace("clicked_box", "unclicked_box");
-    p2_3.classList.replace("clicked_box", "unclicked_box");
-    p2_4.classList.replace("clicked_box", "unclicked_box");
-    p2_5.classList.replace("clicked_box", "unclicked_box");
-    p2_6.classList.replace("clicked_box", "unclicked_box");
-    p2_7.classList.replace("clicked_box", "unclicked_box");
-    p2_8.classList.replace("clicked_box", "unclicked_box");
-    p2_9.classList.replace("clicked_box", "unclicked_box");
-    p2_10.classList.replace("clicked_box", "unclicked_box");
-    p2_11.classList.replace("clicked_box", "unclicked_box");
-    p2_12.classList.replace("clicked_box", "unclicked_box");
-    p2_13.classList.replace("clicked_box", "unclicked_box");
-    p2_14.classList.replace("clicked_box", "unclicked_box");
-    p2_15.classList.replace("clicked_box", "unclicked_box");
-
-    p3_0.classList.replace("clicked_box", "unclicked_box");
-    p3_1.classList.replace("clicked_box", "unclicked_box");
-    p3_2.classList.replace("clicked_box", "unclicked_box");
-    p3_3.classList.replace("clicked_box", "unclicked_box");
-    p3_4.classList.replace("clicked_box", "unclicked_box");
-    p3_5.classList.replace("clicked_box", "unclicked_box");
-    p3_6.classList.replace("clicked_box", "unclicked_box");
-    p3_7.classList.replace("clicked_box", "unclicked_box");
-    p3_8.classList.replace("clicked_box", "unclicked_box");
-    p3_9.classList.replace("clicked_box", "unclicked_box");
-    p3_10.classList.replace("clicked_box", "unclicked_box");
-    p3_11.classList.replace("clicked_box", "unclicked_box");
-    p3_12.classList.replace("clicked_box", "unclicked_box");
-    p3_13.classList.replace("clicked_box", "unclicked_box");
-    p3_14.classList.replace("clicked_box", "unclicked_box");
-    p3_15.classList.replace("clicked_box", "unclicked_box");
-
-
-    p4_0.classList.replace("clicked_box", "unclicked_box");
-    p4_1.classList.replace("clicked_box", "unclicked_box");
-    p4_2.classList.replace("clicked_box", "unclicked_box");
-    p4_3.classList.replace("clicked_box", "unclicked_box");
-    p4_4.classList.replace("clicked_box", "unclicked_box");
-    p4_5.classList.replace("clicked_box", "unclicked_box");
-    p4_6.classList.replace("clicked_box", "unclicked_box");
-    p4_7.classList.replace("clicked_box", "unclicked_box");
-    p4_8.classList.replace("clicked_box", "unclicked_box");
-    p4_9.classList.replace("clicked_box", "unclicked_box");
-    p4_10.classList.replace("clicked_box", "unclicked_box");
-    p4_11.classList.replace("clicked_box", "unclicked_box");
-    p4_12.classList.replace("clicked_box", "unclicked_box");
-    p4_13.classList.replace("clicked_box", "unclicked_box");
-    p4_14.classList.replace("clicked_box", "unclicked_box");
-    p4_15.classList.replace("clicked_box", "unclicked_box");
 
 }
 
