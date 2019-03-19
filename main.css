@@ -5,7 +5,7 @@
 }
 
 ::selection{
-    background: #f74a2c;
+    background: #f7c82c;
 }
 
 #markings, #progress_bar, #pat1_container, #pat2_container, #pat3_container, #pat4_container {
@@ -34,7 +34,7 @@ html{
     padding-bottom: 1.5%;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    width=device-width;
+    width: device-width;
 }
 
 .markings{
@@ -52,7 +52,7 @@ html{
     width: 30px;
     height: 30px;
     border: 1px solid black;
-    background-color: #f74a2c;
+    background-color: #f7c82c;
 }
 
 .unclicked_box {
@@ -69,7 +69,7 @@ html{
     height: 30px;
     border: 1px solid black;
     /*background-color: greenyellow;*/
-    background-color: #f74a2c;
+    background-color: #f7c82c;
 }
 
 .progress_off {
