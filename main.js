@@ -111,13 +111,13 @@ function changeTempo(val) {
     document.getElementById("valueBPM").textContent = tempo + " BPM";
 }
 
-function changeVolume(val) {
+function changeVolume(val) { // broken
     //myPart.setVolume(val);
     masterVolume(val);
     document.getElementById("volumeValue").textContent = val;
 }
 
-function changePat1Volume(val) {
+function changePat1Volume(val) { // broken
     p1_sound.setVolume(val);
     document.getElementById("pat1VolumeValue").textContent = val;
 }
@@ -128,20 +128,17 @@ function togglePlay() {
 }
 
 function clearAll() {
+
     playing = false; 
     myPart.pause(); 
 
-    for(var i = 0; i <= steps_count - 1; i++){
-        p1[i] = 0;
-        p2[i] = 0;
-        p3[i] = 0;
-        p4[i] = 0;
-    }
     disbleAllSteps();
+
 }
 
 var step = 0;
 function onProgress() {
+
     //console.log(step);
     if(step == steps_count){
         step = 0;
@@ -159,9 +156,15 @@ function onProgress() {
     
 }
 
+
 function disbleAllSteps() {
   
     for(var i = 0; i < steps_count; i++) {
+        pattern1.logic_pattern[i] = 0;
+        pattern2.logic_pattern[i] = 0;
+        pattern3.logic_pattern[i] = 0;
+        pattern4.logic_pattern[i] = 0;
+
         pattern1.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
         pattern2.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
         pattern3.graphic_pattern[i].classList.replace("clicked_box", "unclicked_box");
