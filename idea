@@ -1,0 +1,13 @@
+web based drum machine 
+
+*"timeline" for each sample
+*can load own samples
+*default 4 samples (snare, kick, hat, tom)
+* can change bpm
+* can change time signature
+* can add to those 4 default samples (max 16)
+ 
+
+
+- will be too repetitive? 
+- howto fills?

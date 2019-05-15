@@ -1,9 +1,11 @@
-class Pattern {
+class Pattern { // no
     constructor(logic_pattern, graphic_pattern) {
         this.logic_pattern = logic_pattern;
         this.graphic_pattern = graphic_pattern;
     }
 }
+
+// bad placement
 
 var p1_sound, p2_sound, p3_sound, p4_sound, myPart;
 var playing = false;
